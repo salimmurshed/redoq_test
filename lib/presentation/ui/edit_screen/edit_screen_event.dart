@@ -13,3 +13,9 @@ class GetId extends EditScreenEvent {
   String name;
   int age;
 }
+
+class SubmitIDEvent extends EditScreenEvent {
+  SubmitIDEvent(this.context, this.id);
+  BuildContext context;
+  int? id;
+}

@@ -38,6 +38,11 @@ class EditScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  if (state.nameError.isNotEmpty)
+                    Text(
+                      state.nameError,
+                      style: const TextStyle(color: Colors.red),
+                    ),
                   Padding(
                     padding: const EdgeInsets.only(top: 12.0),
                     child: SizedBox(
@@ -53,6 +58,11 @@ class EditScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  if (state.ageError.isNotEmpty)
+                    Text(
+                      state.ageError,
+                      style: const TextStyle(color: Colors.red),
+                    ),
                 ],
               ),
             ),
@@ -65,11 +75,15 @@ class EditScreen extends StatelessWidget {
                 child: FloatingActionButton.extended(
                   backgroundColor: const Color(0xfff4455a),
                   onPressed: () {
-                    context.read<ListScreenBloc>().add(SubmitEvent(
-                        context,
-                        state.id,
-                        state.nameController!.text,
-                        state.ageController!.text));
+                    context.read<EditScreenBloc>().add(SubmitIDEvent(
+                          context,
+                          state.id,
+                        ));
+                    // context.read<ListScreenBloc>().add(SubmitEvent(
+                    //     context,
+                    //     state.id,
+                    //     state.nameController!.text,
+                    //     state.ageController!.text));
                   },
                   label: const Text("Submit"),
                 ),
